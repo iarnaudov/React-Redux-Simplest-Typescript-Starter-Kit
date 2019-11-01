@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState, useEffect, ReactNode, memo } from "react";
 import { IStore } from "../store/IStore";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch, shallowEqual } from "react-redux";
+import { createSelector } from 'reselect'
 
-class Paragraph extends React.Component<{ count: number, dispatch: any }, {}> {
-    public render() {
-        return (
-            <div>
-                This is a sibling and it receives counter: {this.props.count}
-            </div>
-        );
-    }
+interface IParagraph {
+    counterColor: string, dispatch: any, children?: ReactNode;
 }
 
-const mapStateToProps = (state: IStore) => ({
-    count: state.count,
-    counterColor: state.counterColor
+export const Paragraph: React.FC = memo(() => {
+    const color = useSelector((state: IStore) => state.counterColor);
+    const dispatch = useDispatch();
+
+
+    const decrement = () => {
+        dispatch({ type: "DECREMENT" });
+    }
+
+
+    return (
+        <div>
+            {console.log("Pragraph rendered")}
+            This is a sibling and it receives counter: {color}
+            <button onClick={decrement}>DECREMENT</button>
+        </div>
+    );
 });
 
-export default connect(mapStateToProps)(Paragraph);
+// const mapStateToProps = (state: IStore) => ({
+//     counterColor: state.counterColor
+// });
+
+// export default connect(mapStateToProps)(Paragraph);

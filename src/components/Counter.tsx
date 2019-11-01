@@ -3,19 +3,10 @@ import { connect } from "react-redux";
 import { IStore } from "../store/IStore";
 
 class Counter extends React.Component<{ count: number, counterColor: string, dispatch: any }, {}> {
-
     private className = "Counter";
-
-    componentWillMount() {
-        console.log(this.className + " componentWillMount called");
-    }
 
     componentDidMount() {
         console.log(this.className + " componentDidMount called");
-    }
-
-    componentWillUpdate() {
-        console.log(this.className + " componentWillUpdate called");
     }
 
     componentDidUpdate() {
@@ -33,9 +24,11 @@ class Counter extends React.Component<{ count: number, counterColor: string, dis
         this.props.dispatch({ type: "DECREMENT" });
     }
 
-    public render() {
-        console.log(this.className + " render called");
+    private changeColor = () => {
+        this.props.dispatch({ type: "CHANGE_Color" });
+    }
 
+    public render() {
         return (
             <div>
                 <h2 style={{backgroundColor: this.props.counterColor}}>Counter:</h2>

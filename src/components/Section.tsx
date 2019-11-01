@@ -1,5 +1,5 @@
 import React from "react";
-import Paragraph from "./Paragraph";
+import {Paragraph} from "./Paragraph";
 
 export const Section: React.FC = () => {
     return (<div>

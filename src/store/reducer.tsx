@@ -11,13 +11,12 @@ export const reducer = (state = initialState, action: any) => {
 		case "INCREMENT":
 			return {
                 ...state,
-                appColor: action.data.appColor,
                 counterColor: action.data.counterColor,
 				count: state.count + 1
 			}
 		case "DECREMENT":
 			return {
-                ...initialState,
+                ...state,
 				count: state.count - 1
 			}
 		default: 
