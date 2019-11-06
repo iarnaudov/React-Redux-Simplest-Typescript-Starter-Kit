@@ -1,9 +1,23 @@
-import React from "react";
+import React, { memo } from "react";
 import {Paragraph} from "./Paragraph";
+import { useSelector, useDispatch } from "react-redux";
+import { IStore } from "../store/IStore";
+import { Popup } from "./HOC";
+import {What} from "./What";
 
 export const Section: React.FC = () => {
+    const aba = useSelector((state: IStore) => state.obj.aba);
+    const dispatch = useDispatch();
+
+    const RequestFormPopup = Popup({
+        title: "da"
+      })(What);
+    
     return (<div>
+          {console.log("section rendered")}
                 <h2>Section:</h2>
+                <div>{aba}</div>
+                <RequestFormPopup/>
                 <Paragraph/>
             </div>);
 }

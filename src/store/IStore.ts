@@ -1,5 +1,10 @@
+interface SimpleObject {
+    aba: string;
+    baba: string;
+}
+
 export interface IStore {
     count: number;
-    appColor: string;
+    obj: SimpleObject;
     counterColor: string;
 }

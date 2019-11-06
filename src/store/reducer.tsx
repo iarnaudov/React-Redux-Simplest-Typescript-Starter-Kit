@@ -2,7 +2,10 @@ import { IStore } from "./IStore";
 
 const initialState: IStore = {
     count: 24,
-    appColor: "blue",
+    obj: {
+		aba: "dada" ,
+		baba: "nene"
+	},
     counterColor: "green",
 };
 
@@ -11,12 +14,20 @@ export const reducer = (state = initialState, action: any) => {
 		case "INCREMENT":
 			return {
                 ...state,
-                counterColor: action.data.counterColor,
+				counterColor: action.data.counterColor,
+				obj: {
+					...state.obj,
+					baba: "default2"
+				},
 				count: state.count + 1
 			}
 		case "DECREMENT":
 			return {
-                ...state,
+				...state,
+				obj: {
+					...state.obj,
+					baba: "defbababa"
+				},
 				count: state.count - 1
 			}
 		default: 

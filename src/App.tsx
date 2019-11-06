@@ -17,7 +17,7 @@ const App: React.FC = (props: any) => {
 
 const mapStateToProps = (state: IStore) => ({
   title: state.count,
-  headingColor: state.appColor
+  headingColor: state.obj
 });
 
 export default connect(mapStateToProps)(App);

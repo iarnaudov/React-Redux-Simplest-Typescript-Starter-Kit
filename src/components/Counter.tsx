@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { IStore } from "../store/IStore";
+import { object } from "prop-types";
 
-class Counter extends React.Component<{ count: number, counterColor: string, dispatch: any }, {}> {
+class Counter extends React.Component<{ simple1: string, dispatch: any }, {}> {
     private className = "Counter";
 
     componentDidMount() {
@@ -31,9 +32,10 @@ class Counter extends React.Component<{ count: number, counterColor: string, dis
     public render() {
         return (
             <div>
-                <h2 style={{backgroundColor: this.props.counterColor}}>Counter:</h2>
+                {/* <h2 style={{backgroundColor: this.props.counterColor}}>Counter:</h2> */}
                 <button onClick={() => this.increment()}>+</button>
-                <span className="count">{this.props.count}</span>
+                {/* <span className="count">{this.props.count}</span> */}
+                <span >{this.props.simple1}</span>
                 <button onClick={() => this.decrement()}>-</button>
             </div>
         );
@@ -41,8 +43,9 @@ class Counter extends React.Component<{ count: number, counterColor: string, dis
 }
 
 const mapStateToProps = (state: IStore) => ({
-    count: state.count,
-    counterColor: state.counterColor
+    // count: state.count,
+    // counterColor: state.counterColor,
+    simple1: state.obj.aba
 });
 
 export default connect(mapStateToProps)(Counter);
