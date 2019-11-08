@@ -10,24 +10,22 @@ const initialState: IStore = {
 };
 
 export const reducer = (state = initialState, action: any) => {
+	const { obj } = state;
+
 	switch (action.type) {
 		case "INCREMENT":
+			obj.baba = "default2";
 			return {
                 ...state,
 				counterColor: action.data.counterColor,
-				obj: {
-					...state.obj,
-					baba: "default2"
-				},
+				obj,
 				count: state.count + 1
 			}
 		case "DECREMENT":
+			obj.baba = "defbababa";
 			return {
 				...state,
-				obj: {
-					...state.obj,
-					baba: "defbababa"
-				},
+				obj,
 				count: state.count - 1
 			}
 		default: 

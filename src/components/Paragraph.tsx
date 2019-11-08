@@ -4,10 +4,10 @@ import { connect, useSelector, useDispatch, shallowEqual } from "react-redux";
 import { createSelector } from 'reselect'
 
 interface IParagraph {
-    counterColor: string, dispatch: any, children?: ReactNode;
+    onWhatever: (a: string, b: string, c: string) => void;
 }
 
-export const Paragraph: React.FC = () => {
+export const Paragraph: React.FC<IParagraph> = memo((props: IParagraph) => {
     // const color = useSelector((state: IStore) => state.counterColor);
     const aba = useSelector((state: IStore) => state.obj.aba);
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const Paragraph: React.FC = () => {
     const decrement = () => {
         dispatch({ type: "DECREMENT" });
     }
-    console.log("Pragraph rendered")
+
 
     return (
         <div>
@@ -25,7 +25,7 @@ export const Paragraph: React.FC = () => {
             <button onClick={decrement}>{aba}</button>
         </div>
     );
-};
+});
 
 // const mapStateToProps = (state: IStore) => ({
 //     counterColor: state.counterColor
