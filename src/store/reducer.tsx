@@ -1,31 +1,31 @@
 import { IStore } from "./IStore";
 
 const initialState: IStore = {
-    count: 24,
-    obj: {
-		aba: "dada" ,
-		baba: "nene"
+	count: 24,
+	counterColor: "green",
+    heading: {
+		title: "My awesome heading" ,
+		color: "red"
 	},
-    counterColor: "green",
+
 };
 
 export const reducer = (state = initialState, action: any) => {
-	const { obj } = state;
+	const { heading } = state;
 
 	switch (action.type) {
 		case "INCREMENT":
-			obj.baba = "default2";
+			heading.title = "Incremented";
 			return {
                 ...state,
-				counterColor: action.data.counterColor,
-				obj,
+				heading,
 				count: state.count + 1
 			}
 		case "DECREMENT":
-			obj.baba = "defbababa";
+			heading.title = "decremented";
 			return {
 				...state,
-				obj,
+				heading,
 				count: state.count - 1
 			}
 		default: 

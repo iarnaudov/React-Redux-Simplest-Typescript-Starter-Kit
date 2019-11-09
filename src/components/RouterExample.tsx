@@ -15,6 +15,7 @@ export default function RouterExample() {
     <Router>
       <div>
         <nav>
+          <h3>-----------------------Router----------------------</h3>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -45,6 +46,7 @@ export default function RouterExample() {
           </Route>
         </Switch>
       </div>
+      <h3>-----------------------Router----------------------</h3>
     </Router>
   );
 }
@@ -69,6 +71,6 @@ function Users() {
 
   return (<div>
     <h2>Users</h2>
-    <button onClick={() => history.push("/about")}>Button</button>
+    <button onClick={() => history.push("/about")}>Redirect to about</button>
     </div>);
 }

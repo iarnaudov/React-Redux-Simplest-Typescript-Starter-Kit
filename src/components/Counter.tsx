@@ -1,51 +1,29 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "../store/IStore";
-import { object } from "prop-types";
 
-class Counter extends React.Component<{ simple1: string, dispatch: any }, {}> {
-    private className = "Counter";
+export const Counter = () => {
+    const counter = useSelector((state: IStore) => state.count);
+    const dispatch = useDispatch();
+    const componentName: string = "Counter";
 
-    componentDidMount() {
-        console.log(this.className + " componentDidMount called");
+    useEffect(() => {
+        console.log(componentName + " update called");
+    });
+
+    const increment = () => {
+        dispatch({ type: "INCREMENT" });
     }
 
-    componentDidUpdate() {
-        console.log(this.className + " componentDidUpdate called");
-    }
+    const decrement = () => {
+        dispatch({ type: "DECREMENT" });
+    };
 
-    private increment = () => {
-        this.props.dispatch({ type: "INCREMENT", data: {
-            appColor: "red",
-            counterColor: "yellow",
-        }});
-    }
-
-    private decrement = () => {
-        this.props.dispatch({ type: "DECREMENT" });
-    }
-
-    private changeColor = () => {
-        this.props.dispatch({ type: "CHANGE_Color" });
-    }
-
-    public render() {
-        return (
-            <div>
-                {/* <h2 style={{backgroundColor: this.props.counterColor}}>Counter:</h2> */}
-                <button onClick={() => this.increment()}>+</button>
-                {/* <span className="count">{this.props.count}</span> */}
-                <span >{this.props.simple1}</span>
-                <button onClick={() => this.decrement()}>-</button>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <button onClick={increment}>+</button>
+            <span>{counter}</span>
+            <button onClick={decrement}>-</button>
+        </div>
+    );
 }
-
-const mapStateToProps = (state: IStore) => ({
-    // count: state.count,
-    // counterColor: state.counterColor,
-    simple1: state.obj.aba
-});
-
-export default connect(mapStateToProps)(Counter);

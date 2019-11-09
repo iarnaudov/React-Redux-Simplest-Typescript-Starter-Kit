@@ -1,23 +1,16 @@
 import React from 'react';
 import './App.scss';
-import Counter from "./components/Counter";
-import { connect } from "react-redux";
-import { IStore } from './store/IStore';
+import { Counter } from "./components/Counter";
 import { Section } from './components/Section';
+import RouterExample from './components/RouterExample';
 
-const App: React.FC = (props: any) => {
+export const App: React.FC = () => {
   return (
     <div className="App">
-      <h1 style={{backgroundColor: props.headingColor}}>App Heading: {props.title}</h1>
+      <h1> </h1>
       <Counter/>
       <Section/>
+      <RouterExample/>
     </div>
   );
-}
-
-const mapStateToProps = (state: IStore) => ({
-  title: state.count,
-  headingColor: state.obj
-});
-
-export default connect(mapStateToProps)(App);
+};

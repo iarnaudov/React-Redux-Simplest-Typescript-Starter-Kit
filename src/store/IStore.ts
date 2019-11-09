@@ -1,10 +1,10 @@
-interface SimpleObject {
-    aba: string;
-    baba: string;
+interface IHeading {
+    title: string;
+    color: string;
 }
 
 export interface IStore {
     count: number;
-    obj: SimpleObject;
     counterColor: string;
+    heading: IHeading;
 }

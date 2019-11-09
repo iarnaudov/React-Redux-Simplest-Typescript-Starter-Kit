@@ -1,22 +1,18 @@
-import React from "react";
+import React, { ReactType } from "react";
 
 export interface IPopup {
-    title: string;
+  title: string;
 }
 
-export const Popup = (props: IPopup) => (WrappedComponent: any) => {
-  class WithDataFetching extends React.Component {
-
-    render() {
+export const Popup = (props: IPopup) => (WrappedComponent: ReactType) => {
+  const popup = () => {
       return (
-          <div>
-              <div>Higher Order Component = {props.title}</div>
-               <WrappedComponent />
-          </div>
-       
+        <div>
+          <div>Higher Order Component = {props.title}</div>
+          <WrappedComponent {...props} />
+        </div>
       );
-    }
-  }
+    };
 
-  return WithDataFetching;
+  return popup;
 };

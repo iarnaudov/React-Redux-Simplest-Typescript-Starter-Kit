@@ -1,28 +1,19 @@
 import React, { useState, useEffect, ReactNode, memo } from "react";
 import { IStore } from "../store/IStore";
 import { connect, useSelector, useDispatch, shallowEqual } from "react-redux";
-import { createSelector } from 'reselect'
 
 interface IParagraph {
     onWhatever: (a: string, b: string, c: string) => void;
 }
 
 export const Paragraph: React.FC<IParagraph> = memo((props: IParagraph) => {
-    // const color = useSelector((state: IStore) => state.counterColor);
-    const aba = useSelector((state: IStore) => state.obj.aba);
+    const heading = useSelector((state: IStore) => state.heading);
     const dispatch = useDispatch();
-
-
-    const decrement = () => {
-        dispatch({ type: "DECREMENT" });
-    }
-
 
     return (
         <div>
             {console.log("Pragraph rendered")}
-            {/* This is a sibling and it receives counter: {color} */}
-            <button onClick={decrement}>{aba}</button>
+            <h2>{heading.title}</h2>
         </div>
     );
 });
